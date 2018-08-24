@@ -1,0 +1,34 @@
+[
+  {
+    "name": "nineteen",
+    "tag": "fiction,dystopian,40"
+    },
+  {
+    "name": "Meaning",
+    "tag": "non-fiction,science,60"
+    },
+  {
+    "name": "History",
+    "tag": "non-fiction,sience,80"
+    },
+  {
+    "name": "revolution",
+    "tag": "non-fiction,politics,30"
+  },
+  {
+    "name": "the alchemist",
+    "tag": "fiction,adventure,nature,80"
+  },
+  {
+    "name": "Mocking bird",
+    "tag": "fiction,civil right,america,60"
+  },
+  {
+    "name": "cat",
+    "tag": "non-fiction,science,physics,90"
+  },
+  {
+    "name": "Gatsby",
+    "tag": "fiction,war,wealth,80"
+  }
+]
