@@ -28,6 +28,7 @@ flutter:
   uses-material-design: true
   assets:
     - Images/
+    - Images/imageedit_26_8716278705.png
     - asset/OISI Navy Library Engineering/
     - asset/OISI Navy Library Logistics/
     - asset/OISI Navy Library Medical/

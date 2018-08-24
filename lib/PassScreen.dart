@@ -7,7 +7,7 @@ import 'dart:math';
 
 List<String> finetic = ['alpha','bravo','charlie','delta','echo','foxtrot','golf','hotel',
                         'india','julliet','kilo','lima','mike','november','oscar','papa',
-                        'quebec','romeo','sierra','tango','uniform','viktor','whiskey','xray','yankee','zulu'];
+                        'quebec','romeo','sierra','tango','uniform','victor','whiskey','xray','yankee','zulu'];
 
 List<int> pass=[];
 TextEditingController controller = new TextEditingController();
@@ -55,13 +55,13 @@ class PassState extends State<Pass> {
     // TODO: implement build
     return new Scaffold(
         appBar: new AppBar(
-          backgroundColor: Colors.grey[900],
+          backgroundColor: Color(0xFF393D4D),
           title: new Text(
               'Login', textAlign: TextAlign.center, textScaleFactor: 1.2),
         ),
         body:
        new Container(
-
+          color: Color(0xFF262A38),
          child: new Column(
            mainAxisAlignment: MainAxisAlignment.spaceAround,
            crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,16 +75,19 @@ class PassState extends State<Pass> {
                //maxLengthEnforced: true,
                textAlign: TextAlign.center,
                style: TextStyle(fontWeight: FontWeight.bold ),
+
                //maxLength: 5,
                //onChanged: onSearchTextChanged,
                focusNode: new FocusNode(),
                cursorColor:  Colors.black,
              ),
 
+             SizedBox(height: 60.0),
+
             new Expanded(child:  new GridView.count(
               crossAxisCount: 3,
-              mainAxisSpacing: 1.0,
-              crossAxisSpacing: 1.0,
+              mainAxisSpacing: 5.0,
+              crossAxisSpacing: 5.0,
               shrinkWrap: true,
               childAspectRatio: 1.0,
               padding: const EdgeInsets.only(
@@ -97,7 +100,11 @@ class PassState extends State<Pass> {
 
        )
       ,
+        bottomNavigationBar: new BottomAppBar(
+            color: Color(0xFF393D4D),
 
+           child : new Image.asset( 'Images/imageedit_26_8716278705.png',fit: BoxFit.scaleDown,scale: 2.0,height: 50.0,width: 30.0,alignment: Alignment.centerLeft,)
+        )
     );
   }
 
@@ -118,12 +125,23 @@ List<Widget> _buildGridTiles(numberOfTiles) {
   List<Container> containers = new List<Container>.generate(numberOfTiles,
           (int index) {
         return new Container(
+            //padding: EdgeInsets.all(10.0),
+            //decoration: BoxDecoration(
+             // color: Color(0xFF393D4D),
+             // shape: BoxShape.circle,
+             // border: new Border.all(
+
+              //  color: Color(0xFF393D4D),
+              //  width: 5.0,
+            //  ),
+          //  ),
+          color: Color(0xFF393D4D),
             child: new Column(
               children: <Widget>[
-                new Text((index+1).toString(),style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.black, fontSize: 40.0)),
+                new Text((index+1).toString(),style: new TextStyle(color: Color(0xFFFFFFFF), fontSize: 40.0)),
                 new FlatButton(onPressed:()=> buttonclick(index),
                         child: new Text(randomAlpha(),
-                        style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.black),textAlign: TextAlign.center ))
+                        style: new TextStyle(fontWeight: FontWeight.bold,color: Color(0xFFFFFFFF)),textAlign: TextAlign.center ))
               ],
             )
 
