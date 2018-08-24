@@ -3,31 +3,38 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:math';
+import 'Categories.dart';
+
 
 
 List<String> finetic = ['alpha','bravo','charlie','delta','echo','foxtrot','golf','hotel',
                         'india','julliet','kilo','lima','mike','november','oscar','papa',
                         'quebec','romeo','sierra','tango','uniform','victor','whiskey','xray','yankee','zulu'];
 
-List<int> pass=[];
+List<String> pass=[];
 TextEditingController controller = new TextEditingController();
 
 class Pass extends StatefulWidget {
   //Custom constructor, add property : title
 
+  String username;
+  Pass(String username){
+    this.username=username;
+  }
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return new PassState();//Return a state object
+    return new PassState(username);//Return a state object
   }
 }
 
 class PassState extends State<Pass> {
 
-  PassState() {
-    url = "https://api.myjson.com/bins/169v7s";
+  String username ;
+  PassState(String username) {
+    this.username= username;
+    url = "https://api.myjson.com/bins/18jz8g";
     loginDetail = [];
-    passwordDetail = [];
   }
 
   void initState() {
@@ -70,25 +77,33 @@ class PassState extends State<Pass> {
 
              new TextField(
                controller: controller,
+               decoration: new InputDecoration(
+
+               ),
                //decoration: new InputDecoration(
                 //   hintText: 'Password', border: InputBorder.none ),
                //maxLengthEnforced: true,
                textAlign: TextAlign.center,
-               style: TextStyle(fontWeight: FontWeight.bold ),
+               style: TextStyle(fontWeight: FontWeight.bold , fontSize: 35.0, color: Colors.white),
 
                //maxLength: 5,
-               //onChanged: onSearchTextChanged,
+               //onChanged: passcheck(controller.text),
                focusNode: new FocusNode(),
                cursorColor:  Colors.black,
              ),
 
-             SizedBox(height: 60.0),
+             new FlatButton(onPressed: ()=> passcheck(controller.text),
+                          child: new Text('Go', style: TextStyle(
+                     fontSize: 20.0,
+                     color: Color(0xFFCFCFD1)),textAlign: TextAlign.center,)),
 
-            new Expanded(child:  new GridView.count(
+            new Expanded(
+                child:  new GridView.count(
               crossAxisCount: 3,
               mainAxisSpacing: 5.0,
               crossAxisSpacing: 5.0,
               shrinkWrap: true,
+
               childAspectRatio: 1.0,
               padding: const EdgeInsets.only(
                   left: 4.0, top: 4.0, right: 4.0, bottom: 4.0),
@@ -103,19 +118,36 @@ class PassState extends State<Pass> {
         bottomNavigationBar: new BottomAppBar(
             color: Color(0xFF393D4D),
 
-           child : new Image.asset( 'Images/imageedit_26_8716278705.png',fit: BoxFit.scaleDown,scale: 2.0,height: 50.0,width: 30.0,alignment: Alignment.centerLeft,)
+            child : new Row(
+              children: <Widget>[
+                SizedBox(width: 20.0,),
+                new Image.asset( 'Images/imageedit_26_8716278705.png',fit: BoxFit.scaleDown,scale: 1.5,height: 60.0,width: 300.0,alignment: Alignment.centerLeft,)
+
+              ],
+            )
+
         )
     );
   }
-
-  onSearchTextChanged(String text) async {
+/////////////////////////////////////////////////////////////////////////////////
+ void passcheck(String text)  {
     //passwordDetail.clear();
     if (text.isEmpty) {
       setState(() {});
       return;
     }
+    else if(text.length==5){
+      for(int i=0; i<= loginDetail.length; i++){
+        if(loginDetail[i].user==username&&controller.text==loginDetail[i].passValue){
+          runApp(new MaterialApp(
+            home: Categories(),
+          ));
+        }
+      }
+      controller.clear();
+    }
   }
-
+////////////////////////////////////////////////////////////////////////////////
 }
 
 List<Widget> _buildGridTiles(numberOfTiles) {
@@ -132,17 +164,21 @@ List<Widget> _buildGridTiles(numberOfTiles) {
              // border: new Border.all(
 
               //  color: Color(0xFF393D4D),
-              //  width: 5.0,
+                height: 2.0,
+                width: 2.0,
             //  ),
           //  ),
           color: Color(0xFF393D4D),
             child: new Column(
+
               children: <Widget>[
                 new Text((index+1).toString(),style: new TextStyle(color: Color(0xFFFFFFFF), fontSize: 40.0)),
-                new FlatButton(onPressed:()=> buttonclick(index),
+                new FlatButton(onPressed:()=> buttonclick((index+1).toString()),
                         child: new Text(randomAlpha(),
                         style: new TextStyle(fontWeight: FontWeight.bold,color: Color(0xFFFFFFFF)),textAlign: TextAlign.center ))
               ],
+            mainAxisSize: MainAxisSize.min
+            ,crossAxisAlignment: CrossAxisAlignment.start,
             )
 
         );
@@ -150,11 +186,18 @@ List<Widget> _buildGridTiles(numberOfTiles) {
   return containers;
 }
 
-
-void buttonclick(int no)
+//function for input button
+void buttonclick(String no)
 {
-  pass.add(no+1);
-  controller.text= pass.toString();
+  pass.add(no);
+  controller.text= pass.join("");
+}
+
+String func(){
+  String st;
+  for(int i=0; i<=pass.length; i++)
+  {st=st+pass[i].toString();}
+  return st;
 }
 
 String randomAlpha()
@@ -168,19 +211,19 @@ String randomAlpha()
 
 
 List<FileDetails> loginDetail = [];
-  List<FileDetails> passwordDetail = [];
+//List<FileDetails> passwordDetail = [];
 //Set Url
 String url ;
 //class File Details
 class FileDetails {
-  final String fileName, tagValue;
+  final String user, passValue;
 
-  FileDetails({ this.fileName, this.tagValue});
+  FileDetails({ this.user, this.passValue});
 
   factory FileDetails.fromJson(Map<String, dynamic> json) {
     return new FileDetails(
-      fileName: json['ID'],
-      tagValue: json['Password'],
+      user: json['ID'],
+      passValue: json['Password'],
     );
   }
 }

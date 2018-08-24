@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'PassScreen.dart';
 import 'dart:ui';
 
+TextEditingController username = new TextEditingController();
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -17,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
         radius: 48.0,
-        child: Image.asset('assets/logo.png'),
+        child: Image.asset('Images/imageedit_26_8716278705.png'),
       ),
     );
 
@@ -26,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       autofocus: false,
       textAlign: TextAlign.center,
       style: TextStyle(fontSize: 25.0,color:  Colors.black),
+      controller: username ,
       decoration: InputDecoration(
         hintText: 'Username',
         filled: true,
@@ -43,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
     child: MaterialButton(
     minWidth: 200.0,
     height: 48.0,
-    onPressed: () => runApp(new MaterialApp(home: Pass())),
+    onPressed: () => runApp(new MaterialApp(home: Pass(username.text))),
     color: Color(0xFFFFFFFF),
     child: Text('Go', style: TextStyle(
     fontSize: 25.0,

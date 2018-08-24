@@ -4,7 +4,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_pdf_viewer/flutter_pdf_viewer.dart';
 import 'Main.dart';
+import 'Categories.dart';
 
+List<String> categoriesBranch = ['Logistics', 'Engineering', 'Medical','Warfare'];
 
 
 class Search extends StatefulWidget {
@@ -55,18 +57,22 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('File ',textScaleFactor: 1.2, textAlign: TextAlign.center,),
+
+        backgroundColor: Color(0xFF393D4D),
+        title: new Text('Categories/ '+categoriesBranch[i],textAlign: TextAlign.left, textScaleFactor: 1.2),
         actions: <Widget>[
           new FlatButton(onPressed: () => runApp(new MaterialApp(
-            home: new MainPage(),
+            home: new Categories(),
           )
-          ), child: new Text('Back',style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.blueGrey[900]) ))
+          ), child: new Text('Back',style: new TextStyle(fontWeight: FontWeight.bold,color: Color(0xFF393D4D)) ))
 
         ],
-        backgroundColor: Colors.blueGrey[900],
+       // backgroundColor: Colors.blueGrey[900],
         //elevation: 0.0,
       ),
-      backgroundColor: Colors.blueGrey[400],
+
+
+      backgroundColor: Color(0xFF262A38),
 
 
 
@@ -75,10 +81,9 @@ class _SearchState extends State<Search> {
         children: <Widget>[
           //search container
 
-
-
+///////Search bar /////////////////////////////////////////////////////////////////////////////////
           new Container(
-            decoration: new BoxDecoration(color: Colors.blueGrey[400]),
+            decoration: new BoxDecoration(color: Color(0xFF262A38)),
             //color: Theme.of(context).backgroundColor,
             child: new Padding(
               padding: const EdgeInsets.all(8.0),
@@ -99,9 +104,9 @@ class _SearchState extends State<Search> {
               ),
             ),
           ),
+
           //container done for search column
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
           new Expanded(
             child: _searchResult.length != 0 || controller.text.isNotEmpty
                 ? new ListView.builder(
@@ -122,14 +127,33 @@ class _SearchState extends State<Search> {
               itemCount: _fileDetails.length,
               itemBuilder: (context, index) {
                 return new Card(
+                  color: Color(0xFF393D4D),
                     child: new ListTile(
-
                       onTap: ()=>FlutterPdfViewer.loadAsset(pathGen(i, _fileDetails[index].fileName)),
-                      //onTap: ()=> PdfViewerPlugin.getPdfViewer("load_json/a.pdf",10.0,400.0,400.0),
+                      title: new Row(
+                        children: <Widget>[
+                          new Container(
+                            decoration:new BoxDecoration(
+                              color: Color(0xFF393D4D),
+                              shape: BoxShape.circle,
+                              border: new Border.all(color: Colors.blueAccent)
 
-                      title: new Text(_fileDetails[index].fileName ), //not searched
 
-                    ),
+                            )
+                            ,width: 20.0,
+                            height: 20.0,
+                            child: new Text(index.toString(),textAlign: TextAlign.center, style: new TextStyle(fontWeight: FontWeight.bold,color: Color(0xFFCFCFD1)),),
+                            )
+                          ,
+                          SizedBox(width: 5.0,)
+                          ,
+                          new Text(_fileDetails[index].fileName, style: new TextStyle(fontWeight: FontWeight.bold,color: Color(0xFFCFCFD1)) ), //not searched
+
+                        ],
+                      )
+                      // new Text(_fileDetails[index].fileName ), //not searched
+                    )
+                    ,
                     margin: const EdgeInsets.all(1.0),
                     //elevation: 1.0
                 );
