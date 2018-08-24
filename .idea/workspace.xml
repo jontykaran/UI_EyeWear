@@ -6,15 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b9a15b6a-35e9-44b8-aa40-296360b5e404" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Images/engineering.png" afterPath="$PROJECT_DIR$/Images/engineering.png" />
-      <change beforePath="$PROJECT_DIR$/Images/logistics.png" afterPath="$PROJECT_DIR$/Images/logistics.png" />
-      <change beforePath="$PROJECT_DIR$/Images/medical.png" afterPath="$PROJECT_DIR$/Images/medical.png" />
-      <change beforePath="$PROJECT_DIR$/Images/warfare.png" afterPath="$PROJECT_DIR$/Images/warfare.png" />
-      <change beforePath="$PROJECT_DIR$/lib/Categories.dart" afterPath="$PROJECT_DIR$/lib/Categories.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/PassScreen.dart" afterPath="$PROJECT_DIR$/lib/PassScreen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/Search.dart" afterPath="$PROJECT_DIR$/lib/Search.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/loginfirst.dart" afterPath="$PROJECT_DIR$/lib/loginfirst.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" afterPath="$PROJECT_DIR$/lib/main.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -335,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535106730670</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="final">
+      <created>1535136212081</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1535136212081</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -422,7 +420,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="password screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="password screen" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
