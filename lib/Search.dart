@@ -29,7 +29,8 @@ class _SearchState extends State<Search> {
     _searchResult= [];
     this.i= i;
     if(i==1){url = "https://api.myjson.com/bins/1df73s";}
-    else if(i==0){ url = "https://api.myjson.com/bins/8xpyw";}
+    else if(i==0){ url = "https://www.jasonbase.com/things/oRMK.json";}
+    //"https://api.myjson.com/bins/12qknk";}
     else if(i==2){ url = "https://api.myjson.com/bins/13w9fc";}
     else {url = "https://api.myjson.com/bins/mmovs";}
   }
@@ -49,7 +50,6 @@ class _SearchState extends State<Search> {
   @override
   void initState() {
     super.initState();
-
     getFileDetails();
   }
 
@@ -127,27 +127,27 @@ class _SearchState extends State<Search> {
               itemCount: _fileDetails.length,
               itemBuilder: (context, index) {
                 return new Card(
-                  color: Color(0xFF393D4D),
                     child: new ListTile(
                       onTap: ()=>FlutterPdfViewer.loadAsset(pathGen(i, _fileDetails[index].fileName)),
                       title: new Row(
                         children: <Widget>[
                           new Container(
+
                             decoration:new BoxDecoration(
                               color: Color(0xFF393D4D),
+
                               shape: BoxShape.circle,
-                              border: new Border.all(color: Colors.blueAccent)
 
+                              border: new Border.all(
+                                color: Colors.white,
+                                width: 5.0,
 
+                              ),
                             )
-                            ,width: 20.0,
-                            height: 20.0,
-                            child: new Text(index.toString(),textAlign: TextAlign.center, style: new TextStyle(fontWeight: FontWeight.bold,color: Color(0xFFCFCFD1)),),
-                            )
-                          ,
-                          SizedBox(width: 5.0,)
-                          ,
-                          new Text(_fileDetails[index].fileName, style: new TextStyle(fontWeight: FontWeight.bold,color: Color(0xFFCFCFD1)) ), //not searched
+                            ,
+                            child: new Text(index.toString(),style: new TextStyle(fontSize: 10.0),),
+                          ),
+                          new Text(_fileDetails[index].fileName ), //not searched
 
                         ],
                       )
@@ -162,7 +162,7 @@ class _SearchState extends State<Search> {
 
             ),
           ),
-          
+
 
         ],
       ),

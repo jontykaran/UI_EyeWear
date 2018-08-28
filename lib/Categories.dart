@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Search.dart';
+import 'loginfirst.dart';
 
 class Categories extends StatefulWidget {
   //Custom constructor, add property : title
@@ -196,7 +197,10 @@ class CategoriesState extends State<Categories> {
     child : new Row(
         children: <Widget>[
             SizedBox(width: 20.0,),
-            new Image.asset( 'Images/imageedit_26_8716278705.png',fit: BoxFit.scaleDown,scale: 1.5,height: 60.0,width: 300.0,alignment: Alignment.centerLeft,)
+            new Image.asset( 'Images/imageedit_26_8716278705.png',fit: BoxFit.scaleDown,
+              scale: 1.5,height: 60.0,width: 300.0,alignment: Alignment.centerLeft,),
+            SizedBox(width: 150.0,),
+            new FlatButton(onPressed: ()=> runApp(new MaterialApp(home: LoginPage(),)), child: new Text('Logout', style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.white70), textScaleFactor: 1.1))
 
     ],
     )

@@ -6,6 +6,6 @@ import 'Search.dart';
 
 
 void main() => runApp(new MaterialApp(
-  home: new Pass('abc'),
+  home: new LoginPage(),
   )
 );

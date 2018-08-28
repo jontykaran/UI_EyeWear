@@ -63,8 +63,9 @@ class PassState extends State<Pass> {
     return new Scaffold(
         appBar: new AppBar(
           backgroundColor: Color(0xFF393D4D),
+
           title: new Text(
-              'Login', textAlign: TextAlign.center, textScaleFactor: 1.2),
+              'Login', textAlign: TextAlign.center, textScaleFactor: 1.0,),
         ),
         body:
        new Container(
@@ -75,40 +76,109 @@ class PassState extends State<Pass> {
            children: <Widget>[
 
 
-             new TextField(
-               controller: controller,
-               decoration: new InputDecoration(
+            new Row(
+              children: <Widget>[
+                new SizedBox(width: 16.0,),
+               new Container(
+                 alignment: Alignment.center,
+                 width: 350.0,
+                 child:  new TextField(
+                   controller: controller,
 
+                   decoration: new InputDecoration(
+                   hintText: 'Type Password through keyboard below', border: InputBorder.none ),
+                   //maxLengthEnforced: true,
+                   textAlign: TextAlign.center,
+                   style: TextStyle(fontWeight: FontWeight.bold , fontSize: 14.0, color: Colors.white),
+                   //maxLength: 5,
+                   //onChanged: passcheck(controller.text),
+                   focusNode: new FocusNode(),
+                   // cursorColor:  Colors.black,
+                 ),
                ),
-               //decoration: new InputDecoration(
-                //   hintText: 'Password', border: InputBorder.none ),
-               //maxLengthEnforced: true,
-               textAlign: TextAlign.center,
-               style: TextStyle(fontWeight: FontWeight.bold , fontSize: 35.0, color: Colors.white),
 
-               //maxLength: 5,
-               //onChanged: passcheck(controller.text),
-               focusNode: new FocusNode(),
-               cursorColor:  Colors.black,
+                new SizedBox(width: 45.0,),
+
+                new Container(
+                  height: 32.0,
+                  width: 65.0,
+                  color: Color(0xFF393D4D),
+                  child: new FlatButton(onPressed: ()=> ClearListner(), child: new Text('Clear', style: TextStyle(
+                      fontSize: 10.0,
+                      color: Color(0xFFCFCFD1)),textAlign: TextAlign.center,)),
+                ),
+                new SizedBox(width: 4.0,),
+                new Container(
+                  height: 32.0,
+                  width: 65.0,
+                  color: Color(0xFF393D4D),
+                  child: new FlatButton(onPressed: ()=> runApp(new MaterialApp(
+                    home: Categories(),
+                  )) //passcheck(controller.text)
+
+                  ,
+                      child: new Text('Login', style: TextStyle(
+                          fontSize: 10.0,
+                          color: Color(0xFFCFCFD1)),textAlign: TextAlign.center,)),
+                )
+
+              ],
+            ),
+
+            /*
+             new Flex(
+               direction: Axis.vertical,
+               children: <Widget>[
+
+                 new TextField(
+                   controller: controller,
+                   decoration: new InputDecoration(
+
+                   ),
+                   //decoration: new InputDecoration(
+                   //   hintText: 'Password', border: InputBorder.none ),
+                   //maxLengthEnforced: true,
+                   textAlign: TextAlign.center,
+                   style: TextStyle(fontWeight: FontWeight.bold , fontSize: 10.0, color: Colors.white),
+
+                   //maxLength: 5,
+                   //onChanged: passcheck(controller.text),
+                   focusNode: new FocusNode(),
+                   // cursorColor:  Colors.black,
+                 ),
+
+                 new FlatButton(onPressed: ()=>controller.clear(), child: new Text('back'))
+
+               ],
              ),
 
-             new FlatButton(onPressed: ()=> passcheck(controller.text),
-                          child: new Text('Go', style: TextStyle(
-                     fontSize: 20.0,
-                     color: Color(0xFFCFCFD1)),textAlign: TextAlign.center,)),
+
+            *  new Container(
+               height: 8.0,
+               width: 8.0,
+               child: new FlatButton(onPressed: ()=> passcheck(controller.text),
+                   child: new Text('Go', style: TextStyle(
+                       fontSize: 10.0,
+                       color: Color(0xFFCFCFD1)),textAlign: TextAlign.center,)),
+             ),
+             */
+
 
             new Expanded(
-                child:  new GridView.count(
-              crossAxisCount: 3,
-              mainAxisSpacing: 5.0,
-              crossAxisSpacing: 5.0,
-              shrinkWrap: true,
+                child: new GridView.count(
+                  crossAxisCount: 3,
+                  physics: const NeverScrollableScrollPhysics(),
+                  mainAxisSpacing: 5.0,
+                  crossAxisSpacing: 5.0,
+                  shrinkWrap: true,
 
-              childAspectRatio: 1.0,
-              padding: const EdgeInsets.only(
-                  left: 4.0, top: 4.0, right: 4.0, bottom: 4.0),
-              children: _buildGridTiles(9), //Where is this function ?
-            ))
+                  childAspectRatio: 3.2,
+                  padding: const EdgeInsets.only(
+                      left: 4.0, top: 4.0, right: 4.0, bottom: 4.0),
+                  children: _buildGridTiles(9), //Where is this function ?
+                )
+
+            )
 
            ],
          )
@@ -117,13 +187,13 @@ class PassState extends State<Pass> {
       ,
         bottomNavigationBar: new BottomAppBar(
             color: Color(0xFF393D4D),
-
             child : new Row(
               children: <Widget>[
                 SizedBox(width: 20.0,),
-                new Image.asset( 'Images/imageedit_26_8716278705.png',fit: BoxFit.scaleDown,scale: 1.5,height: 60.0,width: 300.0,alignment: Alignment.centerLeft,)
+                new Image.asset( 'Images/imageedit_26_8716278705.png',fit: BoxFit.scaleDown,scale: 1.4,height: 45.0,width: 300.0,alignment: Alignment.centerLeft,)
 
               ],
+              mainAxisSize: MainAxisSize.min,
             )
 
         )
@@ -131,24 +201,25 @@ class PassState extends State<Pass> {
   }
 /////////////////////////////////////////////////////////////////////////////////
  void passcheck(String text)  {
-    //passwordDetail.clear();
-    if (text.isEmpty) {
-      setState(() {});
-      return;
-    }
-    else if(text.length==5){
+
       for(int i=0; i<= loginDetail.length; i++){
-        if(loginDetail[i].user==username&&controller.text==loginDetail[i].passValue){
+        if(loginDetail[i].user==username && loginDetail[i].passValue==controller.text){
           runApp(new MaterialApp(
             home: Categories(),
           ));
         }
+        else {ClearListner();}
       }
-      controller.clear();
-    }
+  }
+
+
+  void ClearListner(){
+    controller.clear();
+    pass=[];
   }
 ////////////////////////////////////////////////////////////////////////////////
 }
+List<Widget> row = _buildGridTiles(9);
 
 List<Widget> _buildGridTiles(numberOfTiles) {
 
@@ -164,21 +235,23 @@ List<Widget> _buildGridTiles(numberOfTiles) {
              // border: new Border.all(
 
               //  color: Color(0xFF393D4D),
-                height: 2.0,
-                width: 2.0,
+          width: 50.0,
+           height: 50.0,
             //  ),
           //  ),
           color: Color(0xFF393D4D),
-            child: new Column(
-
+            child: new Flex(
+              direction: Axis.vertical,
               children: <Widget>[
-                new Text((index+1).toString(),style: new TextStyle(color: Color(0xFFFFFFFF), fontSize: 40.0)),
+                new Text((index+1).toString(),style: new TextStyle(color: Color(0xFFFFFFFF), fontSize: 9.8)),
                 new FlatButton(onPressed:()=> buttonclick((index+1).toString()),
+                       // color: Colors.black,
                         child: new Text(randomAlpha(),
-                        style: new TextStyle(fontWeight: FontWeight.bold,color: Color(0xFFFFFFFF)),textAlign: TextAlign.center ))
+
+                        style: new TextStyle(fontWeight: FontWeight.bold,color: Color(0xFFFFFFFF),fontSize: 10.2),textAlign: TextAlign.center ,))
               ],
-            mainAxisSize: MainAxisSize.min
-            ,crossAxisAlignment: CrossAxisAlignment.start,
+            //mainAxisSize: MainAxisSize.min
+            //,crossAxisAlignment: CrossAxisAlignment.start,
             )
 
         );
@@ -200,13 +273,19 @@ String func(){
   return st;
 }
 
+
+List<String> randomAlphaStorage=[];
 String randomAlpha()
 {
   var rng = new Random();
-
-     int temp = rng.nextInt(26);
-
+  int temp = rng.nextInt(26);
+if(randomAlphaStorage.contains(finetic[temp])){
+  return randomAlpha();
+}
+else{
+  randomAlphaStorage.add(finetic[temp]);
   return finetic[temp];
+}
 }
 
 
