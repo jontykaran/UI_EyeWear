@@ -1,4 +1,4 @@
-name: listdemo
+name: flutter_123
 description: A new Flutter application.
 
 # The following defines the version and build number for your application.
@@ -17,21 +17,38 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   http: ^0.11.3+17
-  flutter_pdf_viewer: ^0.0.2
+  flutter_pdf_viewer: ^0.0.3
   charcode: ^1.1.2
+  pdf_viewer_plugin: ^0.0.4
+  #path_provider: ^0.6.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.6.1"
+
+flutter_icons:
+  android: true
+ # ios: "Example-Icon"
+  image_path: "assets/icon/icon.png"
+  #image_path_android: "Images/imageedit_26_8716278705.png"
+  #image_path_ios: "assets/icon/icon_ios.png"
+  #adaptive_icon_background: "#FFFAFAFA"
+ # adaptive_icon_foreground: "assets/icon/icon-foreground.png"
 
 flutter:
   uses-material-design: true
   assets:
     - Images/
     - Images/imageedit_26_8716278705.png
-    - asset/OISI Navy Library Engineering/
+    - asset/OISI_Navy_Library_Engineering/
     - asset/OISI Navy Library Logistics/
     - asset/OISI Navy Library Medical/
     - asset/OISI Navy Library Warfare/
-    - asset/OISI Navy Library Engineering/Air structures.pdf
+    #- asset/OISI Navy Library Engineering/Air structures.pdf
+    #- asset/OISI Navy Library Engineering/Acoustic Emission Leaflet.pdf
+    - asset/b.pdf
+    - asset/HonoursandAwardsintheArmedForces.pdf
+
 
